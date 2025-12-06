@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IDS</title>
+    <script type="text/javascript" nonce="18e8ed42ed8848fca2bbf451e28"
+        src="//local.adguard.org?ts=1763543592582&amp;type=content-script&amp;dmn=xurshidbek110.github.io&amp;pth=%2FFirst-big-project%2F&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+    <script type="text/javascript" nonce="18e8ed42ed8848fca2bbf451e28"
+        src="//local.adguard.org?ts=1763543592582&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            color: #fff;
+            background: linear-gradient(135deg, #0e1b22, #1b2d35);
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            position: relative;
+            font-size: 11px;
+            width: 100%;
+            height: 4vh;
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background: linear-gradient(to right, #7b8d8c, #4d5c5f, #4c5a5e);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 11px;
+            padding: 0 20px;
+            width: 155vh;
+            height: 100%;
+            position: relative;
+        }
+
+        header p {
+            color: #FFFFFF;
+            vertical-align: middle;
+            line-height: 126%;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 60px;
+        }
+
+        .header-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            position: absolute;
+            left: 46%;
+        }
+
+        .header-link a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        .header-link a::after {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 2px;
+            background: #cdf92f;
+            transition: width 0.3s;
+        }
+
+        .header-link a:hover::after {
+            width: 100%;
+        }
+
+        .header-link i {
+            font-size: 8px;
+            margin-left: 3px;
+            transform: rotate(180deg);
+            transition: transform 0.4s;
+        }
+
+        .header-link a:hover i {
+            transform: rotate(0);
+        }
+
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: absolute;
+            right: 30px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .header-icons img {
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .header-icons img::after {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 3px;
+            background: #cdf92f;
+            transition: width 0.3s;
+        }
+
+        .header-icons img:hover::after {
+            width: 100%;
+        }
+
+
+        .header-icons a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        .header-icons a::after {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 2px;
+            background: #CDF92F;
+            transition: width 0.3s;
+        }
+
+        .header-icons a:hover::after {
+            width: 100%;
+        }
+
+        .header-icons .long {
+            width: 50px;
+            height: 18px;
+        }
+
+
+
+        .top-gradient {
+            border: none;
+            filter: blur(100px);
+            position: fixed;
+            opacity: 0.5;
+            width: 500px;
+            height: 2000px;
+            transform: rotate(145deg);
+            border-radius: 50%;
+            top: -600px;
+            left: 150px;
+            background: linear-gradient(180deg, rgba(62, 52, 90, 0.253) 10%, rgba(64, 212, 151, 0.56) 80%);
+        }
+
+        .top-left-gradient {
+            border: none;
+            position: fixed;
+            filter: blur(100px);
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            opacity: 0.56;
+            top: -470px;
+            left: 1600px;
+            background: #815757d5;
+            backdrop-filter: blur(710.7999877929688px)
+        }
+
+        .top-left-gradient-bottom {
+            border: none;
+            position: fixed;
+            filter: blur(150px);
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            opacity: 0.56;
+            top: 470px;
+            left: 1750px;
+            background: #815757d5;
+            backdrop-filter: blur(710.7999877929688px)
+        }
+
+        /* -------------- SECTION 1 -------------- */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            max-width: 660px;
+            margin-left: -300px;
+            text-align: start;
+            z-index: 3;
+            position: absolute;
+        }
+
+        .hero-text h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 14px;
+            letter-spacing: 1 px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .hero-text .p {
+            color: #ccc;
+            font-size: 11px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h2 {
+            color: #d2ff00;
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: start;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #fff;
+            transition: all 0.3s ease;
+            background: white;
+            color: black;
+        }
+
+        .btn:hover {
+            background: #d2ff00;
+            color: #000;
+            border-color: #d2ff00;
+        }
+
+        .btn1 {
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #fff;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: white;
+        }
+
+        .btn1:hover {
+            background: white;
+            color: #000;
+        }
+
+        /* --------------for pic--------------- */
+
+        .container {
+            position: absolute;
+            display: flex;
+            justify-content: space-around;
+            margin-left: -100%;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .left-side,
+        .right-side {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .left-img,
+        .right-img {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+
+        /* ********************************* Bunch of Photos  CTRL + / ********************************* */
+
+
+        .right-img {
+            margin-left: 400px;
+        }
+
+        .left-side .left-img-1 {
+            animation: slideInLeft1 1s forwards;
+            top: 100px;
+            left: -20px;
+            width: 250px;
+            height: 170px;
+        }
+
+        .left-side .left-img-2 {
+            animation: slideInLeft2 1.5s forwards;
+            top: 500px;
+            left: -20px;
+            width: 300px;
+            height: 170px;
+        }
+
+        .left-side .left-img-3 {
+            animation: slideInLeft3 2s forwards;
+            top: 350px;
+            left: -125px;
+            width: 350px;
+            height: 250px;
+        }
+
+        .left-side .left-img-4 {
+            animation: slideInLeft4 2.5s forwards;
+            top: 180px;
+            left: -60px;
+            width: 400px;
+            height: 290px;
+        }
+
+        .left-side .left-img-5 {
+            animation: slideInLeft5 3s forwards;
+            top: 380px;
+            left: 150px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .right-side .right-img-1 {
+            animation: slideInRight1 1s forwards;
+            top: 70px;
+            left: 1250px;
+            width: 300px;
+            height: 200px;
+        }
+
+        .right-side .right-img-2 {
+            animation: slideInRight2 1.5s forwards;
+            top: 260px;
+            left: 870px;
+            width: 300px;
+            height: 200px;
+
+        }
+
+        .right-side .right-img-3 {
+            animation: slideInRight3 2s forwards;
+            top: 420px;
+            left: 1000px;
+            width: 300px;
+            height: 200px;
+        }
+
+        .right-side .right-img-4 {
+            animation: slideInRight4 2.5s forwards;
+            top: 470px;
+            left: 1200px;
+            width: 300px;
+            height: 200px;
+        }
+
+        .right-side .right-img-5 {
+            animation: slideInRight5 3s forwards;
+            top: 150px;
+            left: 950px;
+            width: 600px;
+            height: 400px;
+        }
+
+        .right-side .right-img-6 {
+            animation: slideInRight6 3.5s forwards;
+            top: 130px;
+            left: 1100px;
+            width: 120px;
+            height: 200px;
+        }
+
+        .right-side .right-img-7 {
+            animation: slideInRight7 4s forwards;
+            top: 370px;
+            left: 1385px;
+            width: 100px;
+            height: 160px;
+        }
+
+        /* Left-side animations */
+        @keyframes slideInLeft1 {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft2 {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft3 {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft4 {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft5 {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Right-side animations */
+        @keyframes slideInRight1 {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight2 {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight3 {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight4 {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight5 {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight6 {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight7 {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* For responsive design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+
+
+        /* -------------- SECTION 2: DEMOLAR -------------- */
+        .demo-section {
+            text-align: center;
+            padding: 100px 0;
+            /* border: 1px solid #ccc; */
+            box-sizing: border-box;
+        }
+
+        .cards {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 270px;
+            text-align: start;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: scale(0.97);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+
+        .card a {
+            color: white;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        .number-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .number {
+            font-size: 120px;
+            font-weight: 700;
+            color: #c6ff00;
+            line-height: 1;
+        }
+
+        .title {
+            font-size: 35px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .bottom-info {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            gap: 80px;
+            text-align: center;
+        }
+
+        .bottom-item {
+            max-width: 260px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .bottom-item img {
+            width: 60px;
+            height: 60px;
+        }
+
+        main {
+
+            box-sizing: content-box;
+            height: auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50px;
+            margin-top: 30px;
+
+        }
+
+
+
+        /* **************************** Laptop size: 2600px | PC size: 1500px **************************** */
+
+
+
+        .black-part {
+            position: relative;
+            overflow: hidden;
+            height: 2600px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        .black-part::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: #24262E;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            transform: translateY(100%);
+            animation: slideInTop 1.8s ease forwards;
+            z-index: 0;
+        }
+
+        .black-part>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideInTop {
+            0% {
+                transform: translateY(20%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+
+        .black-part .head {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #FFFFFF;
+            letter-spacing: 2px;
+            font-size: 36px;
+            font-weight: 600;
+
+        }
+
+        .black-part .contennt-box {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .black-part .kantent {
+            display: flex;
+            gap: 20px;
+        }
+
+        .black-part .kantent img {
+            width: 330px;
+            height: 260px;
+
+        }
+
+        .black-part .yuqori.button {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 500px;
+            margin: 0 auto;
+            border: 2px solid #fff;
+            background: rgba(255, 255, 255, 0);
+            transition: all 0.3s ease;
+            color: #FFFFFF;
+        }
+
+        .black-part .yuqori.button:hover {
+            background: #FFFFFF;
+            color: #000;
+        }
+
+        main .black-part .main-header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 170px;
+            align-items: center;
+            background-color: #32343E;
+            top: 570px;
+        }
+
+        .main-header .main-header-p {
+            border: 1px solid #c6ff00;
+            padding: 3px 50px;
+            border-radius: 30px;
+            background: #c6ff00;
+        }
+
+        .main-header p {
+            color: #000;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .main-header .main-header-href {
+            display: flex;
+
+        }
+
+        .main-header .main-header-href a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .main-header .main-header-href a:hover {
+            color: #c6ff00;
+            transform: translateY(-1px);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 30px 170px;
+            position: relative;
+            top: 600px;
+        }
+
+        .grid-card {
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .grid-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .grid-card img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 7px 0px #CDF92F;
+        }
+
+        .grid-card p {
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .shadow {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            z-index: 2;
+        }
+
+        .shadow-button {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 600px;
+            border: none;
+            background: linear-gradient(120deg, #CDF92F 40%, #6a6eef 70%, #a7e3f4 100%);
+            transition: all 0.3s ease;
+            color: #000;
+            z-index: 2;
+        }
+
+        .shadow-button:hover {
+            background: linear-gradient(240deg, #CDF92F 40%, #6a6eef 70%, #a7e3f4 100%);
+            color: #000;
+        }
+
+        .shadow-button:active {
+            transform: translateX(-50%) scale(0.98);
+        }
+
+
+        /* ********************************* White Part ********************************* */
+
+
+        .white-part {
+            background: #FFFFFF;
+            height: 2000px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .white-part p {
+            /* border: 1px solid #000; */
+            padding: 50px 0;
+            text-align: center;
+            font-size: 45px;
+            color: #000;
+        }
+
+        .white-part .content-box {
+            /* border: 1px solid #000; */
+            width: 80%;
+            margin: 0 auto;
+            padding: 0 30px;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .content-box .up-two-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .content-white1 {
+            background: #FFFFFF;
+            display: flex;
+            width: 50%;
+            height: 200px;
+            border-radius: 20px;
+            box-shadow: 0px 15.12px 32.18px 0px #0000001C;
+
+        }
+
+        .content-white1 img {
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            margin: 0 30px;
+        }
+
+        .content-white1 h5 {
+            color: #000;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .content-white1 p {
+            color: #5C5C5C;
+            border: none;
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 0;
+            text-align: start;
+            max-width: 300px;
+
+        }
+
+        .content-black {
+            background: #32343E;
+            width: 50%;
+            height: 200px;
+            display: flex;
+            box-shadow: 0px 15.12px 32.18px 0px #0000001C;
+            border-radius: 20px;
+        }
+
+        .content-black h5 {
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 0 30px;
+        }
+
+        .content-black p {
+            color: #FFFFFF;
+            border: none;
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 0 30px;
+            text-align: start;
+            max-width: 400px;
+        }
+
+        .content-black .border-img {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .mid-three-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .content-green {
+            width: 35%;
+            height: 450px;
+            background: #44FFBC;
+            border-radius: 20px;
+        }
+
+        .content-green img {
+            margin: 0 30px;
+            width: 400px;
+            height: 300px;
+        }
+
+        .content-green h5 {
+            color: #000;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 10px;
+            text-align: start;
+        }
+
+        .content-green p {
+            color: #5C5C5C;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 10px;
+            text-align: start;
+            line-height: 1.6;
+            border: none;
+        }
+
+        .three-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 65%;
+            gap: 30px;
+        }
+
+        .content-blue {
+            box-shadow: 0px 15.12px 32.18px 0px #0000001C;
+            background: linear-gradient(270deg, #9500FF 0.78%, #4E3DCA 100%);
+            width: 100%;
+            height: 200px;
+            border-radius: 20px;
+            display: flex;
+
+        }
+
+        .content-blue h5 {
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 0 30px;
+        }
+
+        .content-blue p {
+            color: #FFFFFF;
+            border: none;
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 0 30px;
+            text-align: start;
+            max-width: 400px;
+        }
+
+        .content-blue img {
+            width: 250px;
+        }
+
+        .content-white2 {
+            box-shadow: 0px 15.12px 32.18px 0px #0000001C;
+            width: 100%;
+            height: 200px;
+            border-radius: 20px;
+            display: flex;
+        }
+
+        .content-white2 h5 {
+            color: #000;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 0 30px;
+        }
+
+        .content-white2 p {
+            color: #5C5C5C;
+            border: none;
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 0 30px;
+            text-align: start;
+            max-width: 400px;
+        }
+
+        .bottom-two-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .content-black2 {
+            background: #32343E;
+            width: 50%;
+            height: 200px;
+            display: flex;
+            box-shadow: 0px 15.12px 32.18px 0px #0000001C;
+            border-radius: 20px;
+        }
+
+        .content-black2 h5 {
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 0 30px;
+        }
+
+        .content-black2 p {
+            color: #FFFFFF;
+            border: none;
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 0 30px;
+            text-align: start;
+            max-width: 400px;
+        }
+
+
+        .content-white3 {
+            background: #FFFFFF;
+            display: flex;
+            width: 50%;
+            height: 200px;
+            border-radius: 20px;
+            box-shadow: 0px 15.12px 32.18px 0px #0000001C;
+        }
+
+        .content-white3 img {
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            margin: 0 30px;
+        }
+
+        .content-white3 h5 {
+            color: #000;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 0 30px;
+            margin-top: 20px;
+        }
+
+        .content-white3 p {
+            color: #5C5C5C;
+            border: none;
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 0 30px;
+            text-align: start;
+            max-width: 300px;
+        }
+
+        .last-big-photo {
+            width: 100%;
+            height: 600px;
+            position: relative;
+
+            border-radius: 20px;
+        }
+
+        .last-big-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .last-big-photo .opacity {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.100);
+            border-radius: 20px;
+        }
+
+        .last-big-photo-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 400px;
+            left: 25%;
+            transform: translate(-50%, -50%);
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .last-big-photo-text h5 {
+            font-size: 18px;
+            font-weight: 800;
+            padding: 10px 30px;
+            text-align: start;
+            margin-bottom: 10px;
+        }
+
+        .last-big-photo-text p {
+            font-size: 13px;
+            text-align: start;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-weight: 600;
+            padding: 0 30px;
+            border: none;
+            color: #FFFFFF;
+        }
+
+        .last-big-photo-text button {
+            margin-bottom: 20px;
+            margin-left: -150px;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 2px solid #fff;
+            background: rgba(255, 255, 255, 0);
+            transition: all 0.3s ease;
+            color: #FFFFFF;
+        }
+
+        .last-big-photo-text button:hover {
+            background: #FFFFFF;
+            color: #000;
+        }
+
+        .last-big-photo-text button:active {
+            transform: scale(0.98);
+        }
+
+        /* ****************************** PC: top: 18%, left:65%  *********************************** */
+
+        .last-big-photo .frame-right {
+            position: absolute;
+            /* top: 18%;
+        left: 55%; */
+            top: 18%;
+            left: 65%;
+            width: 600px;
+            height: 400px;
+        }
+
+
+        /* ************************************** About Customers' Thinking  PC: margin-top: 0 , laptop: margin-top: -100px **************************************************/
+
+        .customers-section {
+            /* border: 1px solid #ccc; */
+            background-color: #24262E;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            height: auto;
+            padding: 60px 0;
+            padding-bottom: 15%;
+            margin-top: 0;
+        }
+
+        .paragraph {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .under-text {
+            font-size: 14px;
+            color: #FFFFFF;
+            font-weight: 700;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .carousel {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+
+        .question-p {
+            font-size: 35px;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+
+        .accordion-box {
+            width: 45%;
+            background: white;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 30px;
+            padding: 30px 20px;
+        }
+
+        .accordion-tugma {
+            border: 2px solid #000000;
+            margin-top: 100px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            padding: 5px 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            background: #ffffff;
+        }
+
+        .accordion-tugma:hover {
+            background: #CDF92F;
+            border: 2px solid #CDF92F;
+        }
+
+        /* *************************************************** Last part *********************************************************/
+
+        .content {
+            background: #fff;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            text-align: center;
+            padding: 240px 20px 100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .content::before {
+            content: "W";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 450px;
+            color: rgba(0, 0, 0, 0.05);
+            font-weight: 900;
+            z-index: -1;
+        }
+
+        .content h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .content .btn {
+            background: #111;
+            color: #fff;
+            padding: 12px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .content .btn:hover {
+            background: #333;
+        }
+
+        footer {
+            background: #1d1f25;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        footer .left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 400px;
+        }
+
+        footer .left span {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        footer .left p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #cfcfcf;
+        }
+
+        footer .center {
+            display: flex;
+            gap: 20px;
+        }
+
+        footer .center a {
+            color: #fff;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        footer .center a:hover {
+            color: #999;
+        }
+
+        footer .right {
+            text-align: right;
+            font-size: 13px;
+            color: #bbb;
+        }
+
+        footer .right a {
+            color: #bbb;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 26px;
+            }
+
+            .content::before {
+                font-size: 250px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            footer .right {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-gradient"></div>
+    <div class="top-left-gradient"></div>
+    <div class="top-left-gradient-bottom"></div>
+    <header>
+        <div class="header-container">
+            <p>OCTAVI</p>
+
+            <div class="header-link">
+                <a href="#boshsahifa">Bosh Sahifa</a>
+                <a href="#xususiyatlari">Xususiyatlari <i class="fa-solid fa-chevron-up"></i></a>
+                <a href="#elementlar">Elementlar</a>
+                <a href="#sahifalar">Sahifalar</a>
+                <a href="#blog">Blog</a>
+            </div>
+
+            <div class="header-icons">
+                <a href="#">Kirish</a>
+                <img src="Icon.png" alt="">
+                <img class="long" src="2.png" alt="">
+            </div>
+        </div>
+
+    </header>
+
+
+    <!-- -------------- SECTION 1 -------------- -->
+    <section class="hero-section">
+        <div class="hero-text">
+            <h1>Har qanday loyiha <br> uchun Professional mavzular <br> va Websayt shablonlari</h1>
+            <p>Dunyo miqyosidagi ishlab chiquvchilar tomonidan <br> yaratilgan minglab mavzularni, shablonlarni va CMS
+                <br>
+                mahsulotlarini sozlash oson.
+            </p>
+
+
+
+            <div class="stats">
+                <div class="stat">
+                    <h2>057+</h2>
+                    <p class="p">Oldindan demolar</p>
+                </div>
+                <div class="stat">
+                    <h2>300+</h2>
+                    <p class="p">Web shablonlar</p>
+                </div>
+                <div class="stat">
+                    <h2>01k+</h2>
+                    <p class="p">5 yulduzli sharhlar</p>
+                </div>
+                <div class="stat">
+                    <h2>6+</h2>
+                    <p class="p">Yillik xaridorlar</p>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a href="#demolar"><button class="btn">DEMOLAR</button></a>
+                <a href="#whitepart"><button class="btn1">Xususiyatlar bilan tanishish</button></a>
+            </div>
+        </div>
+
+        <!-- ----------PICTURE------------- -->
+        <div class="container">
+            <div class="left-side">
+                <img class="left-img left-img-1" src="img1.png" alt="Image 1" />
+                <img class="left-img left-img-2" src="img2.png" alt="Image 2" />
+                <img class="left-img left-img-3" src="img3.png" alt="Image 3" />
+                <img class="left-img left-img-4" src="img4.png" alt="Image 4" />
+                <img class="left-img left-img-5" src="img5.png" alt="Image 5" />
+            </div>
+
+            <div class="right-side">
+                <img class="right-img right-img-1" src="img11.png" alt="Image 6" />
+                <img class="right-img right-img-2" src="img12.png" alt="Image 7" />
+                <img class="right-img right-img-3" src="img13.png" alt="Image 8" />
+                <img class="right-img right-img-4" src="img14.png" alt="Image 9" />
+                <img class="right-img right-img-5" src="img15.png" alt="Image 10" />
+                <img class="right-img right-img-6" src="img16.png" alt="Image 11" />
+                <img class="right-img right-img-7" src="img17.png" alt="Image 12" />
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------- SECTION 2 -------------- -->
+    <section id="elementlar" class="demo-section">
+        <div class="cards">
+            <div class="card">
+                <h4>Professionalism</h4>
+                <p>We deliver the final work with great professional way.</p>
+                <a href="#">more info</a>
+            </div>
+            <div class="card">
+                <h4>Professionalism</h4>
+                <p>We deliver the final work with great professional way.</p>
+                <a href="#">more info</a>
+            </div>
+            <div class="card">
+                <h4>Professionalism</h4>
+                <p>We deliver the final work with great professional way.</p>
+                <a href="#">more info</a>
+            </div>
+            <div class="card">
+                <h4>Professionalism</h4>
+                <p>We deliver the final work with great professional way.</p>
+                <a href="#">more info</a>
+            </div>
+        </div>
+
+        <div class="number-section">
+            <div class="number" id="count">000</div>
+            <div class="title">Demolar</div>
+        </div>
+
+        <div class="bottom-info">
+            <div class="bottom-item">
+                <p>Noldan veb-sayt yaratish uchun vaqtni tejang. Loyi hangizni tezda boshlash uchun tayyor
+                    veb-saytlarning boy
+                    to‘plamidan foydalaning.</p>
+            </div>
+            <div class="bottom-item">
+                <img src="frame1.png" alt="">
+                <p>Bir marta bosish bilan demo o‘rnatish</p>
+            </div>
+            <div class="bottom-item">
+                <img src="frame2.png" alt="">
+                <p>Barcha demolar va xususiyatlarni aralashtirish mumkin</p>
+            </div>
+            <div class="bottom-item">
+                <img src="frame3.png" alt="">
+                <p>Hamma narsa bitta xaridga kiritilgan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------- Black Part -------------- -->
+
+    <main>
+        <div class="black-part">
+            <div class="black-fixed">
+                <p class="head">YUQORI FAYLLAR</p>
+                <div class="contennt-box">
+                    <div class="kantent">
+                        <img src="yuqori1.png" alt="">
+                        <img src="yuqori2.png" alt="">
+                        <img src="yuqori3.png" alt="">
+                    </div>
+                    <button class="yuqori button">BARCHASINI KO'RISH</button>
+                </div>
+
+                <div id="demolar" class="main-header">
+                    <div class="main-header-p">
+                        <p>HAMMASI</p>
+                    </div>
+                    <div class="main-header-href">
+                        <a href="#">AGENTLIK</a>
+                        <a href="#">BIZNES</a>
+                        <a href="#">DO'KON</a>
+                        <a href="#">BLOG & JURNAL</a>
+                        <a href="#">PORTFEL</a>
+                    </div>
+                </div>
+
+                <!-- --------------16 TALIK RASM--------------------- -->
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <img src="blackgrid1.png" alt="">
+                        <p>Theme Features</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid2.png" alt="">
+                        <p>TheGrem Blocks</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid3.png" alt="">
+                        <p>Digital Agency</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid4.png" alt="">
+                        <p>Creative Fashion Shop</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid5.png" alt="">
+                        <p>Business Consulting</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid6.png" alt="">
+                        <p>Creative Agency Dark</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid7.png" alt="">
+                        <p>Digital Marketing</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid8.png" alt="">
+                        <p>Start-Up Business</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid9.png" alt="">
+                        <p>Cryptocurrency & ICO Landing</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid10.png" alt="">
+                        <p>Grocery Shop</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid11.png" alt="">
+                        <p>Lms Landing</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid12.png" alt="">
+                        <p>Shop Electronic</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid13.png" alt="">
+                        <p>Shop Elegant Fashion</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid14.png" alt="">
+                        <p>Black Grid 14</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid15.png" alt="">
+                        <p>Black Grid 15</p>
+                    </div>
+                    <div class="grid-card">
+                        <img src="blackgrid16.png" alt="">
+                        <p>Plants Shop</p>
+                    </div>
+
+                    <!-- ---------------- Shadow ---------------- -->
+
+                    <img class="shadow" src="shadow.png" alt="">
+                    <button class="shadow-button">BARCHASINI KO'RISH</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ----------------------- White Part ----------------------- -->
+
+        <div id="whitepart" class="white-part">
+            <p>Bizni Tanlashingizni Sabablari</p>
+            <div class="content-box">
+                <div class="up-two-box">
+                    <div class="content-white1">
+                        <img src="whitepartup.png" alt="">
+                        <div class="content-white1-text">
+                            <h5>Elementor va WPBakery</h5>
+                            <p>Sahifani yaratish hech qachon bunchalik oson bo'lmagan.
+                                IDS ikkita eng mashhur sahifa yaratuvchisi - Elementor
+                                va WPBakery bilan to'liq birlashtirilgan. Bu quruvchilarni
+                                o'zining noyob premium elementlari va xususiyatlari
+                                bilan kengaytiradi.</p>
+                        </div>
+                    </div>
+                    <div class="content-black">
+                        <div class="content-white2-text">
+                            <h5>Keng Dizayn Kutubxonasi</h5>
+                            <p>Chiroyli web-sayt konvertatsiya qilish tezligiga ega. Behance
+                                tarmog‘ining yulduz dizaynerlari barcha zamonaviy dizayn
+                                tendentsiyalarini qamrab olgan 57 dan ortiq ajoyib
+                                demolarni yaratdilar. Ehtiyotkorlik bilan o‘ylangan va har
+                                qanday maqsad uchun yaratilgan. </p>
+                        </div>
+                        <img src="whitegroupup1.png" alt="">
+                        <img class="border-img" src="whitegroupup2.png" alt="">
+                    </div>
+                </div>
+                <div class="mid-three-box">
+                    <div class="content-green">
+                        <img src="whitemid.png" alt="">
+                        <div class="content-green-text">
+                            <h5>Elementor va WPBakery</h5>
+                            <p>Sahifani yaratish hech qachon bunchalik oson bo'lmagan.
+                                IDS ikkita eng mashhur sahifa yaratuvchisi - Elementor
+                                va WPBakery bilan to'liq birlashtirilgan. Bu quruvchilarni
+                                o'zining noyob premium elementlari va xususiyatlari
+                                bilan kengaytiradi.</p>
+                        </div>
+
+                    </div>
+                    <div class="three-column">
+                        <div class="content-blue">
+                            <div class="content-blue-text">
+                                <h5>Elementor va WPBakery</h5>
+                                <p>Sahifani yaratish hech qachon bunchalik oson bo'lmagan.
+                                    IDS ikkita eng mashhur sahifa yaratuvchisi - Elementor
+                                    va WPBakery bilan to'liq birlashtirilgan. Bu quruvchilarni
+                                    o'zining noyob premium elementlari va xususiyatlari
+                                    bilan kengaytiradi.</p>
+                            </div>
+                            <img src="whitemid2.png" alt="">
+                        </div>
+                        <div class="content-white2">
+                            <img src="whitemidgroup.png" alt="">
+                            <div class="content-white2-text">
+                                <h5>Elementor va WPBakery</h5>
+                                <p>Sahifani yaratish hech qachon bunchalik oson bo'lmagan.
+                                    IDS ikkita eng mashhur sahifa yaratuvchisi - Elementor
+                                    va WPBakery bilan to'liq birlashtirilgan. Bu quruvchilarni
+                                    o'zining noyob premium elementlari va xususiyatlari
+                                    bilan kengaytiradi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bottom-two-box">
+                    <div class="content-black2">
+                        <div class="content-black2-text">
+                            <h5>Elementor va WPBakery</h5>
+                            <p>Sahifani yaratish hech qachon bunchalik oson bo'lmagan.
+                                IDS ikkita eng mashhur sahifa yaratuvchisi - Elementor
+                                va WPBakery bilan to'liq birlashtirilgan. Bu quruvchilarni
+                                o'zining noyob premium elementlari va xususiyatlari
+                                bilan kengaytiradi.</p>
+                        </div>
+                        <img src="whitebottom.png" alt="">
+                    </div>
+                    <div class="content-white3">
+                        <div class="content-white3-text">
+                            <h5>Elementor va WPBakery</h5>
+                            <p>Sahifani yaratish hech qachon bunchalik oson bo'lmagan.
+                                IDS ikkita eng mashhur sahifa yaratuvchisi - Elementor
+                                va WPBakery bilan to'liq birlashtirilgan. Bu quruvchilarni
+                                o'zining noyob premium elementlari va xususiyatlari
+                                bilan kengaytiradi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="blog" class="last-big-photo">
+                    <img src="bigframe.png" alt="">
+                    <img class="opacity" src="frame.png" alt="">
+                    <div class="last-big-photo-text">
+                        <h5>IDS Bloklari. <br>
+                            Tezroq Dizayn. <br>
+                            Yaxshiroq Aylantirish.</h5>
+                        <p>Yorug'lik tezligida sahifalar yaratish uchun qahramon,
+                            haqida, kontakt, portfel, xizmatlar va boshqa ko'plab oldindan ishlab chiqilgan bo'lim
+                            shablonlarining
+                            katta to'plamiga ega yakuniy vosita.</p>
+                        <button>IDS Bloklari bilan tanishing</button>
+                    </div>
+                    <img class="frame-right" src="frameyoni.png" alt="">
+                </div>
+            </div>
+    </main>
+
+    <!-- -------------------------------- About Customers' Thinking ----------------------------------------------------------- -->
+
+    <section id="sahifalar" class="customers-section">
+        <p class="paragraph">IDS haqida mijozlarimiz</p>
+        <p class="under-text">2K real mijoz sharhlari asosida 4,9 yulduz</p>
+
+        <div class="carousel">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="carusel1.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="carusel2.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="carusel3.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item ">
+                        <img src="carusel4.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item ">
+                        <img src="carusel5.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item ">
+                        <img src="carusel6.png" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="question-p">Tez-tez so'raladigan savollar</p>
+
+        <div class="accordion-box">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            IDS-dan shablon sotib olishimga nimalar kiradi?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body" style="text-align: start; font-size: 12px; font-weight: 500;">TheGem
+                            mavzusi:
+                            Elementor va WPBakery versiyalari <br>
+                            Barcha 400+ oldindan tuzilgan demolarga kirish <br>
+                            TheGem Blocks: 600+ tayyor sahifa bo'limlari <br>
+                            Birlashtirilgan premium plaginlar <br>
+                            Kelajakdagi barcha yangilanishlarga cheksiz kirish</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            IDS-dan shablon sotib olishimga nimalar kiradi?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body" style="text-align: start; font-size: 12px; font-weight: 500;">TheGem
+                            mavzusi:
+                            Elementor va WPBakery versiyalari <br>
+                            Barcha 400+ oldindan tuzilgan demolarga kirish <br>
+                            TheGem Blocks: 600+ tayyor sahifa bo'limlari <br>
+                            Birlashtirilgan premium plaginlar <br>
+                            Kelajakdagi barcha yangilanishlarga cheksiz kirish
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            IDS-dan shablon sotib olishimga nimalar kiradi?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body" style="text-align: start; font-size: 12px; font-weight: 500;">TheGem
+                            mavzusi: Elementor va WPBakery versiyalari <br>
+                            Barcha 400+ oldindan tuzilgan demolarga kirish <br>
+                            TheGem Blocks: 600+ tayyor sahifa bo'limlari <br>
+                            Birlashtirilgan premium plaginlar <br>
+                            Kelajakdagi barcha yangilanishlarga cheksiz kirish <br>
+                            Barcha 400+ oldindan tuzilgan demolarga kirish <br>
+                            TheGem Blocks: 600+ tayyor sahifa bo'limlari
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFour" aria-expanded="false"
+                            aria-controls="flush-collapseFour">
+                            IDS-dan shablon sotib olishimga nimalar kiradi?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                            demonstrate the
+                            <code>.accordion-flush</code> class. This is the fourth item’s accordion body.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFive" aria-expanded="false"
+                            aria-controls="flush-collapseFive">
+                            IDS-dan shablon sotib olishimga nimalar kiradi?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFive" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                            demonstrate the
+                            <code>.accordion-flush</code> class. This is the fifth item’s accordion body.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                            IDS-dan shablon sotib olishimga nimalar kiradi?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSix" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                            demonstrate the
+                            <code>.accordion-flush</code> class. This is the sixth item’s accordion body.
+                        </div>
+                    </div>
+                </div>
+
+                <button class="accordion-tugma">Sotib olishdan oldingi savollar?</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="content">
+        <h1>WordPress IDS mavzularini hozir yuklab oling!</h1>
+        <p>Biz bilan o‘z biznesingizni yarating.</p>
+        <a href="#" class="btn">YUKLAB OLMOQ</a>
+    </section>
+
+    <footer>
+        <div class="left">
+            <span>IDS</span>
+            <p>IDS – bu zamonaviy ijodiy dizaynga ega ko‘p qirrali wp mavzusi. Kontent elementlari, uslublari va
+                xususiyatlarining yakuniy asboblar to‘plami sifatida yaratilgan u odamlarga ta’sirchan yuqori samarali
+                web-sayt shablonlarini taqdim etadi.</p>
+        </div>
+
+        <div class="center">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+        <div class="right">
+            <p>Copyright 2024</p>
+            <a href="#">Privacy policy</a> |
+            <a href="#">Legal info</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script>
+        // ------------ CTRL + Scroll blocklaydi -------------------
+        document.addEventListener('wheel', function (event) {
+            if (event.ctrlKey) {
+                event.preventDefault();
+                document.body.style.zoom = '100%';
+            }
+        }, { passive: false });
+
+        // ---------------- Son animatsiya ---------------------
+        const leftImgs = document.querySelectorAll(".left-images img");
+        const rightImgs = document.querySelectorAll(".right-images img");
+
+        leftImgs.forEach((img, i) => {
+            setTimeout(() => (img.style.opacity = 1), i * 150);
+        });
+        rightImgs.forEach((img, i) => {
+            setTimeout(() => (img.style.opacity = 1), i * 150);
+        });
+
+        // Sanash animatsiyasi (0 => 72)
+        const countEl = document.getElementById("count");
+        let count = 0;
+        const target = 72;
+        const duration = 2500;
+        const step = target / (duration / 20);
+
+        const counter = setInterval(() => {
+            count += step;
+            if (count >= target) {
+                count = target;
+                clearInterval(counter);
+            }
+            countEl.textContent = count.toFixed(0).padStart(3, '0');
+        }, 20);
+    </script>
+
+</body>
+
+</html>
